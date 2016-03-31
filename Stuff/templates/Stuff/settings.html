@@ -1,0 +1,16 @@
+{% extends "Stuff/home.html" %}
+{% load crispy_forms_tags %}
+
+{% block site-content %}
+
+	<div id="add_new_part_form">
+		{% crispy form %}
+	</div>
+
+	
+		{% load staticfiles %}
+		<script src= "{% static "jquery/jquery-1.12.2.min.js" %}"></script>
+		<link rel="stylesheet" href= "{% static "bootstrap/css/bootstrap.min.css" %}">    
+		<link rel="stylesheet" href= "{% static "Stuff/css/settings.css"%}">
+		<script src= "{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+{% endblock %}

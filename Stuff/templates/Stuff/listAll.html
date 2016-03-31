@@ -1,0 +1,34 @@
+{% extends "Stuff/home.html" %}
+{% load staticfiles %}
+{% block site-content %}
+	<div id="listAll">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th> Część </th>
+					<th> Ilość </th>
+					<th> Typ </th>
+					<th> Opis </th>
+					<th> Zdjecie  </th>
+				</tr>
+			</thead>
+			<tbody>
+					{% for smth in content %}
+						<tr>	
+							<td>	{{ smth.partName }} </td>
+							<td>	{{ smth.partCount }} </td>
+							<td>	{{ smth.partType }} </td>
+							<td>	{{ smth.partDescription }} </td>	
+
+							<td> <img src="{{ MEDIA_URL }}{{smth.picture}}" width="150" height="100"> </td>
+						</tr>
+
+
+					{% endfor %}
+			</tbody>
+	</div>
+{% endblock %}
+
+	 
+
+

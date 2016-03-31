@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<meta charset="UTF-8">
+	<head>
+		<title> {{ title }} </title>
+	<!--
+		<script src="./js/jquery.js"></script>
+		<script src="./js/jssor.slider.mini.js"></script>
+		<script src="./js/slider.js"></script>
+
+		<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        -->
+    {% load staticfiles %}
+    <script src= "{% static "jquery/jquery-1.12.2.min.js" %}"></script>
+    <link rel="stylesheet" href= "{% static "bootstrap/css/bootstrap.min.css" %}">    
+    <link rel="stylesheet" href= "{% static "Stuff/css/home.css"%}">
+    <script src= "{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+    </head>
+
+	<body>
+		<div class="page-header">
+			<h1> MyStuff </h1>
+		</div>
+    <div class="page-body">
+		<div class='navbar navbar-default'>
+			<div class='navbar-header'> <a class='navbar-brand' href='{% url "home" %}'> Home </a> </div>
+			<ul class='nav navbar-nav'>
+				<li> <a href='#'> Płytki bazowe </a> </li>
+				<li> <a href='#'> Czujniki </a> </li>
+				<li> <a href='#'> Wyświetlacze </a> </li>
+				<li> <a href='#'> Komunikacja </a> </li>
+				<li> <a href='#'> Inne </a> </li>
+				<li> <a href='{% url "listaWszystkie" %}'> All list </a> </li>
+				<li> <a href='{% url "tests" %}'> TEST </a> </li>
+			</ul>
+			<ul class='nav navbar-nav navbar-right'>
+				<li class='dropdown'>
+                    <a class='dropdown-toggle' data-toggle='dropdown' href='#'> {{ user }} </a>
+					<ul class='dropdown-menu'>
+                        <li><a href='{% url "Ustawienia"  %}'> Settings </a></li>
+						<li><a href='#'> Logout </a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+    <link rel='stylesheet' href="{% static "Stuff/css/home.css"%}">
+        
+		{% block site-content %}
+		{% endblock %}
+
+		{% block home-content %}
+		{% endblock %}
+
+    </div>
+	</body>
+</html>
