@@ -27,6 +27,7 @@ class Part( models.Model ):
     
     def append( self, item ):
         self.picture = item
+    
     def __str__( self ):
         return self.partName
 
@@ -42,7 +43,9 @@ class PartPicture( models.Model ):
     )
     picture = models.ImageField( _(u"Zdjęcie" ))
     picLabel = models.CharField( _(u"Etykieta"), max_length=100)
-
+    
+    def __str__(self):
+        return self.picLabel + '::pictureID::' + str(self.pictureID)
 
 class PartDocuments(models.Model):
     docID = models.IntegerField(
@@ -54,14 +57,17 @@ class PartDocuments(models.Model):
 
 
 class part_has_picture(models.Model):
-    partID = models.ForeignKey("Part")
-    picID = models.ForeignKey("PartPicture")
+    part = models.ForeignKey("Part")
+    pic = models.ForeignKey("PartPicture")
     
 
-    def __init__( self, _partID, _picID ):
-        self.partID = _partID
-        self.picID = _picID 
-
+    #def __init__( self, _partID, _picID ):
+    #    self.partID = _partID
+    #    self.picID = _picID 
+    @classmethod
+    def create( _class, _part, _pic):
+        instance = _class( part = _part, pic=_pic )
+        return instance
 
 class part_has_document(models.Model):
     partID = models.ForeignKey("Part")

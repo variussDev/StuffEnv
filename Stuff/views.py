@@ -60,10 +60,13 @@ def detailedList( request, part ):
 def edit( request, id ):
     part = Part.objects.get( partID=id )
     form = NewPartPicture()
-
+    print( 'id elementu:::' + str( part.partID ) )
     if request.method == "POST":
         form = NewPartPicture( request.POST, request.FILES )
         if form.is_valid():
-            form.save()
-
+            picture = form.save()
+            rel = table.part_has_picture.create( part, picture )
+            rel.save()
+            print( rel.pic )
+            print( 'picture id:::' + str( picture.pictureID ) ) 
     return render( request, "Stuff/editPart.html", {"part": part, "form":form})
