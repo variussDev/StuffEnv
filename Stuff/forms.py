@@ -60,3 +60,23 @@ class NewPartPicture( forms.ModelForm ):
             ),
         )
 
+        
+class Part_to_picture_test( forms.Form ):
+    partField = forms.ModelChoiceField( queryset = Part.objects.all()  )
+    partImage = forms.ImageField( _(u"Zdjęcie") )
+
+    def __init__( self, *args, **kwargs):
+        super( Part_to_picture_test, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_action =""
+        self.helper.form_method = "POST"
+
+        self.helper.layout = layout.Layout(
+                layout.Field("partField", css_class="input-block_level"),
+                layout.Field("partImage", css_class="btn btn-primary"),
+                bootstrap.FormActions(
+                    layout.Submit("submit", _(u"Zapisz")),
+                ),
+        )
+
+

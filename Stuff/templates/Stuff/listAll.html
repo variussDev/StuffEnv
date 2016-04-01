@@ -14,7 +14,8 @@
 			</thead>
 			<tbody>
 					{% for smth in content %}
-						<tr>	
+					<a href='{% url "edycja" id=smth.partID %}'>
+					<tr data-href='{% url "edycja" id=smth.partID %}'>	
 							<td>	{{ smth.partName }} </td>
 							<td>	{{ smth.partCount }} </td>
 							<td>	{{ smth.partType }} </td>
@@ -22,11 +23,13 @@
 
 							<td> <img src="{{ MEDIA_URL }}{{smth.picture}}" width="150" height="100"> </td>
 						</tr>
+						</a>
 
 
 					{% endfor %}
 			</tbody>
 	</div>
+	<script src="{% static "Stuff/js/all.js" %}"></script>
 {% endblock %}
 
 	 

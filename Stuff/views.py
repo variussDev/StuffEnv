@@ -2,7 +2,9 @@ from django.shortcuts import render
 
 from .forms import NewPart
 from .forms import NewPartPicture
+from .forms import Part_to_picture_test
 
+import Stuff.models  as table
 from .models import Part
 from .models import PartPicture 
 from .models import part_has_picture
@@ -18,9 +20,9 @@ def settings(request):
 
     if request.method == "POST":
         form = NewPart( request.POST )
-        picture = NewPartPicture( request.POST, request.FILES )
-        if form.is_valid():
-            partInstance = form.save()
+        picture = NewPartPicture.create( request.FILES, "fileeeee" )
+        #if form.is_valid():
+        #    partInstance = form.save()
             
     #if request.method == "POST":
     #    pictures = NewPartPicture( request.POST, request.FILES )
@@ -43,4 +45,18 @@ def showAll( request ):
 
 
 def devForm( request ):
-    return render( request, "Stuff/devForm.html", {} )
+    form = NewPartPicture()
+    if request.method == "POST":
+        form = NewPartPicture( request.POST, request.FILES )
+        if form.is_valid():
+            picture = form.save()
+    return render( request, "Stuff/devForm.html", {"form":form} )
+
+def detailedList( request, part ):
+    parts = Part.objects.filter( partType = part )
+    return render( request, "Stuff/detailedList.html", {"title":"Części", "parts":parts} )
+
+
+def edit( request, id ):
+    part = "dupa dupa"
+    return render( request, "Stuff/editPart.html", {"part": part})

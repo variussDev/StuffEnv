@@ -26,11 +26,13 @@
 		<div class='navbar navbar-default'>
 			<div class='navbar-header'> <a class='navbar-brand' href='{% url "home" %}'> Home </a> </div>
 			<ul class='nav navbar-nav'>
-				<li> <a href='#'> Płytki bazowe </a> </li>
-				<li> <a href='#'> Czujniki </a> </li>
-				<li> <a href='#'> Wyświetlacze </a> </li>
-				<li> <a href='#'> Komunikacja </a> </li>
-				<li> <a href='#'> Inne </a> </li>
+				<li> <a href='{% url "listaSzczegolowa" part='boards' %}'> Układy scalone </a> </li>
+				<li> <a href='{% url "listaSzczegolowa" part='sensor' %}'> Czujniki </a> </li>
+				<li> <a href='{% url "listaSzczegolowa" part='screen' %}'> Wyświetlacze </a> </li>
+				<li> <a href='{% url "listaSzczegolowa" part='connection' %}'> Komunikacja </a> </li>
+				<li> <a href='{% url "listaSzczegolowa" part='resistor' %}'> Rezystory </a> </li>
+				<li> <a href='{% url "listaSzczegolowa" part='media' %}'> Multimedia </a> </li>
+				<li> <a href='{% url "listaSzczegolowa" part='other' %}'> Inne </a> </li>
 				<li> <a href='{% url "listaWszystkie" %}'> All list </a> </li>
 				<li> <a href='{% url "tests" %}'> TEST </a> </li>
 			</ul>

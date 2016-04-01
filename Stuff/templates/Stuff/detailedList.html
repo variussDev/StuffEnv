@@ -1,0 +1,25 @@
+{% extends "Stuff/home.html" %}
+
+{% block site-content %}
+	<div id='partsContent'>
+		{% for part in parts %}
+			<div id="part">
+				<div id='partImg'>
+					<a href="{% url 'edycja' id=part.partID  %}">
+						<img src={{ MEDIA_URL }}{{ part.picture }} width="400" height="200" >
+					</a>
+				</div>
+			
+				<div id='partDescription'>
+					{{ part.partDescription }} 
+				</div>
+			</div>	
+		{% endfor %}	
+	</div>
+	
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static "Stuff/css/detailedList.css" %}" >
+
+{% endblock %}
+
+

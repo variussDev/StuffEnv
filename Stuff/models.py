@@ -27,10 +27,17 @@ class Part( models.Model ):
     
     def append( self, item ):
         self.picture = item
+    def __str__( self ):
+        return self.partName
+
+class PartManager( models.Manager ):
+    
+    def add( self, _picture, _picLabel):
+        instance = self.create( picture = _picture, picLabel = _picLabel)
+        return instance
 
 class PartPicture( models.Model ):
-    pictureID = models.IntegerField(
-        unique=True,
+    pictureID = models.AutoField(
         primary_key=True,
     )
     picture = models.ImageField( _(u"Zdjęcie" ))
@@ -51,8 +58,9 @@ class part_has_picture(models.Model):
     picID = models.ForeignKey("PartPicture")
     
 
-    def __init__( self, partID, picID )
-
+    def __init__( self, _partID, _picID ):
+        self.partID = _partID
+        self.picID = _picID 
 
 
 class part_has_document(models.Model):
