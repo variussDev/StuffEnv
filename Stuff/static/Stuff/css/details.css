@@ -1,0 +1,19 @@
+h1.part{
+	float: center;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#part{
+	width: 80%;
+	margin: 0 auto;
+}
+
+#description{
+	text-align: center;
+}
+
+#getPicture{
+	width: 40%;
+	margin: 0 auto;
+}
