@@ -20,9 +20,9 @@ def settings(request):
 
     if request.method == "POST":
         form = NewPart( request.POST )
-        picture = NewPartPicture.create( request.FILES, "fileeeee" )
-        #if form.is_valid():
-        #    partInstance = form.save()
+        #picture = NewPartPicture.create( request.FILES, "fileeeee" )
+        if form.is_valid():
+            partInstance = form.save()
             
     #if request.method == "POST":
     #    pictures = NewPartPicture( request.POST, request.FILES )
@@ -58,5 +58,12 @@ def detailedList( request, part ):
 
 
 def edit( request, id ):
-    part = "dupa dupa"
-    return render( request, "Stuff/editPart.html", {"part": part})
+    part = Part.objects.get( partID=id )
+    form = NewPartPicture()
+
+    if request.method == "POST":
+        form = NewPartPicture( request.POST, request.FILES )
+        if form.is_valid():
+            form.save()
+
+    return render( request, "Stuff/editPart.html", {"part": part, "form":form})

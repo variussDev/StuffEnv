@@ -3,11 +3,25 @@
 {% block site-content%}
 	<div id='part'>
 		<div id='partDetails'>
-			tu beda informacje o czesci wybranej do edycji + formularz dodawania zdjec
+			<h1 class='part'> {{ part.partName }} </h1>
+			
+			<div id='mainImg'>
+			</div>
+			
+			<div id='description'>
+				{{ part.partDescription }} 
+			</div>
 		</div>
 
-		<div id='partPictures'>
-			div ze zdjeciami
+		<div id='getPicture'>
+			{% load crispy_forms_tags %}
+			{% crispy form %}
 		</div>
+
 	</div>
+	
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{% static "Stuff/css/details.css" %}"> 
+
 {% endblock %}
+
