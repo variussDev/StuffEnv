@@ -6,6 +6,9 @@
 			<h1 class='part'> {{ part.partName }} </h1>
 			
 			<div id='mainImg'>
+				{% for picture in part.pictures.all %}
+					<img id='detailsImage' src= {{MEDIA_URL}}{{picture.picture}}>
+				{% endfor %}
 			</div>
 			
 			<div id='description'>

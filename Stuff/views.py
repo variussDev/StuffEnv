@@ -7,7 +7,6 @@ from .forms import Part_to_picture_test
 import Stuff.models  as table
 from .models import Part
 from .models import PartPicture 
-from .models import Part_has_picture
 
 # Create your views here.
  
@@ -57,14 +56,8 @@ def detailedList( request, part ):
     print( 'znalezione czesci' )
     print ( parts )
     partsID = []
-    for part in parts:
-        partsID.append( part.partID )
     
-    partsWithPictures = Part_has_picture.objects.filter( part =  parts )
-    print('---------------------------')
-    print(  partsWithPictures )
-    print('---------------------------')
-    return render( request, "Stuff/detailedList.html", {"title":"Części", "parts":parts, "partsWithPictures":partsWithPictures} )
+    return render( request, "Stuff/detailedList.html", {"title":"Części", "parts":parts, } )
 
 
 def edit( request, id ):
@@ -75,8 +68,8 @@ def edit( request, id ):
         form = NewPartPicture( request.POST, request.FILES )
         if form.is_valid():
             picture = form.save()
-            rel = table.Part_has_picture.create( part, picture )
-            rel.save()
-            print( rel.pic )
-            print( 'picture id:::' + str( picture.pictureID ) ) 
+            part.pictures.add( picture  )
+            part.save()
+            print( 'po zapisie zdjecia i dodaniu do relacji' )
+            print( part.pictures.filter( part = part ) )
     return render( request, "Stuff/editPart.html", {"part": part, "form":form})

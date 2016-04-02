@@ -17,3 +17,18 @@ h1.part{
 	width: 40%;
 	margin: 0 auto;
 }
+
+#mainImg{
+	width: 80%;
+	height: auto;
+	margin: 0 auto;
+	text-align: center;
+}
+
+
+
+#detailsImage{
+	width: 400px;
+	height: 200px;
+	margin: 0 auto;
+}

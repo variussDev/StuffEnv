@@ -6,7 +6,7 @@
 			<div id="part">
 				<div id='partImg'>
 					<a href="{% url 'edycja' id=part.partID  %}">
-						<img src={{ MEDIA_URL }}{{ part.picture }} width="400" height="200" >
+						<img src={{ MEDIA_URL }}{{ part.pictures.all | first }} width="400" height="200" >
 					</a>
 				</div>
 			
