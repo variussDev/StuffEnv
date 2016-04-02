@@ -29,7 +29,7 @@ class Part( models.Model ):
         self.picture = item
     
     def __str__( self ):
-        return self.partName
+        return self.partName +'    '+ str( self.partID )
 
 class PartManager( models.Manager ):
     
@@ -56,19 +56,18 @@ class PartDocuments(models.Model):
     docLabel = models.CharField(_(u"Etykieta"), max_length=100)
 
 
-class part_has_picture(models.Model):
+class Part_has_picture(models.Model):
     part = models.ForeignKey("Part")
     pic = models.ForeignKey("PartPicture")
     
+    def __str__( self ):
+        return 'PartInstance::' + str( self.part.partID ) + '::PictureInstance::' + str( self.pic.pictureID )
 
-    #def __init__( self, _partID, _picID ):
-    #    self.partID = _partID
-    #    self.picID = _picID 
     @classmethod
     def create( _class, _part, _pic):
         instance = _class( part = _part, pic=_pic )
         return instance
 
-class part_has_document(models.Model):
+class Part_has_document(models.Model):
     partID = models.ForeignKey("Part")
     docID = models.ForeignKey("PartDocuments")
