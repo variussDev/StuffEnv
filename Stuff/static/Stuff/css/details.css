@@ -23,6 +23,7 @@ h1.part{
 	margin-top: 10px;
 	height: auto;
 	margin: 0 auto;
+	text-align: center;
 }
 
 
@@ -31,4 +32,5 @@ h1.part{
 	margin-top: 10px;
 	width: 400px;
 	height: 200px;
+	float: center;
 }
