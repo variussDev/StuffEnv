@@ -2,6 +2,7 @@ h1.part{
 	float: center;
 	margin: 0 auto;
 	text-align: center;
+	margin-bottom: 10px;
 }
 
 #part{
@@ -19,16 +20,15 @@ h1.part{
 }
 
 #mainImg{
-	width: 80%;
+	margin-top: 10px;
 	height: auto;
 	margin: 0 auto;
-	text-align: center;
 }
 
 
 
 #detailsImage{
+	margin-top: 10px;
 	width: 400px;
 	height: 200px;
-	margin: 0 auto;
 }
