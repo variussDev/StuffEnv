@@ -31,7 +31,7 @@
 				<li> <a href='{% url "listaSzczegolowa" part='screen' %}'> Wyświetlacze </a> </li>
 				<li> <a href='{% url "listaSzczegolowa" part='connection' %}'> Komunikacja </a> </li>
 				<li> <a href='{% url "listaSzczegolowa" part='resistors' %}'> Rezystory </a> </li>
-				<li> <a href='{% url "listaSzczegolowa" part='media' %}'> Multimedia </a> </li>
+				<li> <a href='{% url "listaSzczegolowa" part='multimedia' %}'> Multimedia </a> </li>
 				<li> <a href='{% url "listaSzczegolowa" part='other' %}'> Inne </a> </li>
 				<li> <a href='{% url "listaWszystkie" %}'> All list </a> </li>
 				<li> <a href='{% url "tests" %}'> TEST </a> </li>
@@ -49,9 +49,48 @@
     <link rel='stylesheet' href="{% static "Stuff/css/home.css"%}">
         
 		{% block site-content %}
-		{% endblock %}
+			<script src="{% static 'js/jssor.slider.mini.js' %}" type='text/javascript'> </script>
+			<script src="{% static 'jquery/jquery-1.9.1.min.js' %}"></script>
+			<script src="{% static 'js/jssOptions.js' %}"></script>
+			
 
-		{% block home-content %}
+				<div id='slideshow'>
+					{% for part in parts %}
+			
+					<!--
+					<script>
+						$( document ).ready( function (){
+							var _SlideshowTransitions = [];
+
+							var options = {
+								$AutoPlay: true,
+								$SlideshowOptions:{
+									$Class: $JssorSlideshowRunner$,
+									$Transitions: _SlideshowTransitions,
+									$TransitionsOrder: 1,
+									$ShowLink: true
+								}
+							};
+							
+							var jssor_slider = new $JssorSlider$('sliderContainer{{ part.partID }}', options );
+						});
+					</script>
+					-->
+						<div id="sliderContainer{{part.partID}}" class = 'containerClass' style='top:0px; position:relative;left:0px;width:400px;height:200px;float:left;margin:5px'>
+							<div id="slidesContainer" u='slides' style='cursor:move;position:absolute;overflow:hidden;left;0px;top:0px;width:400px;height:200px'>				
+								{% for picture in part.pictures.all %}
+									<div><img u="image" src={{ MEDIA_URL }}{{ picture }} /></div>
+								{% endfor %}
+							</div>
+						</div>
+						<script>
+							$( document ).ready( function() {
+								new $JssorSlider$( 'sliderContainer'+ {{ part.partID }}, options);
+							});
+						</script>
+					{% endfor %}
+				</div>
+			
 		{% endblock %}
 
     </div>

@@ -21,7 +21,7 @@
 							<td>	{{ smth.partType }} </td>
 							<td>	{{ smth.partDescription }} </td>	
 
-							<td> <img src="{{ MEDIA_URL }}{{smth.picture}}" width="150" height="100"> </td>
+							<td> <img src="{{ MEDIA_URL }}{{smth.pictures.all | first }}" width="150" height="100"> </td>
 						</tr>
 						</a>
 
@@ -30,6 +30,7 @@
 			</tbody>
 	</div>
 	<script src="{% static "Stuff/js/all.js" %}"></script>
+	<link rel="stylesheet" href="{% static "Stuff/css/all.css" %}">	
 {% endblock %}
 
 	 

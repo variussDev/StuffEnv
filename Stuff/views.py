@@ -11,7 +11,8 @@ from .models import PartPicture
 # Create your views here.
  
 def home(request):
-    return render(request, 'Stuff/home.html', {"title":"HOME"} )
+    partsImages = Part.objects.all()
+    return render(request, 'Stuff/home.html', {"title":"HOME", "parts":partsImages} )
 
 
 def settings(request):
